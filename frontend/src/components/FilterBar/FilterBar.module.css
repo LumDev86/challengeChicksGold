@@ -1,0 +1,44 @@
+.filterBar {
+  background-color: #424457;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.caption {
+  margin-right: 7rem;
+  padding: 5rem 0 0 0;
+  font-size: 3rem;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filterItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+.filterItem select,
+.filterItem input {
+  background-color: #333;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+}
+
+.filterItem .icon {
+  color: #00c76f;
+}

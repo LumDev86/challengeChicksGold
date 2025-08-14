@@ -1,0 +1,119 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #35364a; /* color del fondo del logo */
+  padding: 2rem 2rem; /* un poco más alto */
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  border-bottom: #9c9cac 1.5px solid;
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 60px; /* más grande que los 35px originales */
+  margin-right: 1rem;
+}
+
+.menu {
+  display: flex;
+  gap: 2rem;
+  margin-left: 7rem;
+  flex: 1;
+  justify-content: start;
+}
+
+.menu a {
+  text-decoration: none;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.menu a:hover {
+  opacity: 0.8;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.dropdown {
+  cursor: pointer;
+}
+
+.cart {
+  cursor: pointer;
+}
+
+.currency {
+  cursor: pointer;
+}
+
+.signIn {
+  background-color: #00c76f;
+  color: black;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.signIn:hover {
+  background-color: #00a95e;
+}
+
+.userIcon {
+  margin-left: 0.5rem;
+}
+
+.hamburger {
+  display: none;
+}
+
+/* Style Mobile */
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+    justify-content: space-between;
+  }
+
+  .menu {
+    display: none; /* ocultamos menú principal */
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: #35364a;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 2rem;
+  }
+
+  .menu.active {
+    display: flex; /* se mostrará cuando se active el menú */
+  }
+
+  .logoSection {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .rightSection {
+    gap: 1rem;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+}
