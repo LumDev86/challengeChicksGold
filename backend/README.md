@@ -14,12 +14,12 @@ git clone https://github.com/LumDev86/challengeChicksGold.git
 cd backend
 ```
 
-### 2) Restaurar dependencias de .NET
+### 2) Restore .NET Dependencies
 ```bash
 dotnet restore
 ```
 
-### 3) Ejecutar el servidor
+### 3) Run the server
 ```bash
 dotnet run
 ```
