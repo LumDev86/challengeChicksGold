@@ -164,8 +164,3 @@ curl -X POST \
 ```
 
 ---
-
-# 🧑‍💻 Author
-
-**Lucas Matias segovia**
-📧 lms.segovia86@gmail.com

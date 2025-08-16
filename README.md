@@ -42,6 +42,7 @@ In summary, my solution for this challenge reflects my approach as a developer. 
 
 ---
 
+# 🧑‍💻 Author
 
 **Lucas Matias segovia**
 📧 lms.segovia86@gmail.com
