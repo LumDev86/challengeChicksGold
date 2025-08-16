@@ -1,19 +1,27 @@
 package main
 
 import (
-	"net/http"
+	"log"
+	"water-jug-challenge/controllers"
 
 	"github.com/gin-gonic/gin"
 )
 
-func main() {
+// setupRouter configura todas las rutas de la aplicación.
+func setupRouter() *gin.Engine {
 	r := gin.Default()
 
-	r.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "API funcionando 🚀",
-		})
-	})
+	// Ruta GET (con parámetros de consulta)
+	r.GET("/solve", controllers.SolveGetHandler)
 
-	r.Run(":8080") // http://localhost:8080
+	// Ruta POST (con cuerpo JSON)
+	r.POST("/solve", controllers.SolvePostHandler)
+
+	return r
+}
+
+func main() {
+	r := setupRouter()
+	log.Println("🚀 Servidor corriendo en http://localhost:8080")
+	r.Run(":8080")
 }
