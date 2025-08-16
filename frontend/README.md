@@ -6,13 +6,20 @@ First, clone the project from GitHub:
 
 ```bash
 git clone https://github.com/user/repository-name.git
+```
 
+```bash
 cd frontend
+```
 
+```bash
 npm install
+```
 
+```bash
 npm start
 ```
+---
 
 ## 1. Project Structure
 

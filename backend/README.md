@@ -10,7 +10,7 @@ RESTful API developed in **.NET Core 9** that solves the classic water jug probl
 
 ### 1) Clone the repository
 ```bash
-git clone https://github.com/LumDev86/challengeChicksGold.git
+git clone https://github.com/user/repository-name.git
 cd backend
 ```
 
