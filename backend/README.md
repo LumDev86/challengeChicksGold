@@ -28,6 +28,25 @@ The solution is based on a **Breadth-First Search (BFS)** algorithm. This approa
 To optimize performance, the algorithm includes an early validation using the **Greatest Common Divisor (GCD)** of the jug capacities. If the target amount (Z) is **not divisible** by the GCD of X and Y, it is immediately determined that **no solution exists**, saving valuable processing time.
 
 ---
+## Structure organization of files and folders
+
+```
+📦backend
+ ┣ 📂controllers
+ ┃   ┗ 📜waterjug_controller_test.go
+ ┃   ┗ 📜waterjug_controller.go
+ ┣ 📂services
+ ┃   ┗ 📜waterjug_service_test.go
+ ┃   ┗ 📜waterjug_service.go
+ ┗ 📂models
+ ┃   ┗ 📜waterjug_model.go
+ ┗ go.mod
+ ┗ go.sum
+ ┗ main.go
+ 
+```
+
+---
 
 ## 📖 API Endpoints
 The API offers two endpoints to solve the puzzle, providing flexibility to the client.
