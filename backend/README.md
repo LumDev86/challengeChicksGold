@@ -1,7 +1,8 @@
 # Water Jug Puzzle Challenge
 
-## 📝 Project Description
-This project is a RESTful API developed in Go that solves the classic water jug puzzle. The API calculates the sequence of steps needed to measure an exact amount of water (Z) using two jugs with specific capacities (X and Y). The objective of this challenge is to demonstrate the ability to design an efficient and well-documented backend solution.
+# 🌊 Water Jug API
+
+RESTful API developed in **.NET Core 9** that solves the classic water jug problem. It calculates the sequence of steps needed to measure an exact amount of water `z_amount_wanted` using two jugs with specific capacities (`x_capacity` and `y_capacity`).
 
 ---
 
@@ -10,15 +11,20 @@ This project is a RESTful API developed in Go that solves the classic water jug 
 ### 1) Clone the repository
 ```bash
 git clone https://github.com/LumDev86/challengeChicksGold.git
-cd [your-repository-name]
+cd backend
 ```
 
-### 2) Run the server
+### 2) Restaurar dependencias de .NET
 ```bash
-go run main.go
+dotnet restore
 ```
 
-The server will start at: `http://localhost:8080`.
+### 3) Ejecutar el servidor
+```bash
+dotnet run
+```
+
+The server will start at: `http://localhost:5144`.
 
 ---
 
@@ -33,17 +39,18 @@ To optimize performance, the algorithm includes an early validation using the **
 ```
 📦backend
  ┣ 📂controllers
- ┃   ┗ 📜waterjug_controller_test.go
- ┃   ┗ 📜waterjug_controller.go
+ ┃  ┗ 📜WaterJugController.cs
  ┣ 📂services
- ┃   ┗ 📜waterjug_service_test.go
- ┃   ┗ 📜waterjug_service.go
- ┗ 📂models
- ┃   ┗ 📜waterjug_model.go
- ┗ go.mod
- ┗ go.sum
- ┗ main.go
- 
+ ┃  ┣ 📜IWaterJugService.cs
+ ┃  ┗ 📜WaterJugService.cs
+ ┣ 📂models
+ ┃  ┣ 📜RequestPayload.cs
+ ┃  ┣ 📜SolutionResponse.cs
+ ┃  ┗ 📜Step.cs
+ ┣ 📂router
+ ┃  ┗ 📜WaterJugRouter.cs
+ ┗  Program.cs
+
 ```
 
 ---
@@ -62,55 +69,60 @@ The API offers two endpoints to solve the puzzle, providing flexibility to the c
 
 **Example Request:**
 ```bash
-curl "http://localhost:8080/solve?x=3&y=5&z=4"
+curl "http://localhost:5144/WaterJug/solve?x=5&y=2&z=4"
 ```
 
 **Example Successful Response (HTTP 200 OK):**
 ```json
 {
-  "solution_found": true,
-  "steps": [
-    {
-      "step": 1,
-      "bucketX": 0,
-      "bucketY": 5,
-      "action": "Llenar cubo Y"
-    },
-    {
-      "step": 2,
-      "bucketX": 3,
-      "bucketY": 2,
-      "action": "Transferir de Y a X"
-    },
-    {
-      "step": 3,
-      "bucketX": 0,
-      "bucketY": 2,
-      "action": "Vaciar cubo X"
-    },
-    {
-      "step": 4,
-      "bucketX": 2,
-      "bucketY": 0,
-      "action": "Transferir de Y a X"
-    },
-    {
-      "step": 5,
-      "bucketX": 2,
-      "bucketY": 5,
-      "action": "Llenar cubo Y"
-    },
-    {
-      "step": 6,
-      "bucketX": 3,
-      "bucketY": 4,
-      "action": "Transferir de Y a X",
-      "status": "Solved"
-    }
-  ]
+    "solutionFound": true,
+    "steps": [
+        {
+            "stepNumber": 1,
+            "bucketX": 0,
+            "bucketY": 2,
+            "action": "Fill bucket Y",
+            "status": null
+        },
+        {
+            "stepNumber": 2,
+            "bucketX": 2,
+            "bucketY": 0,
+            "action": "Transfer from Y to X",
+            "status": null
+        },
+        {
+            "stepNumber": 3,
+            "bucketX": 2,
+            "bucketY": 2,
+            "action": "Fill bucket Y",
+            "status": null
+        },
+        {
+            "stepNumber": 4,
+            "bucketX": 4,
+            "bucketY": 0,
+            "action": "Transfer from Y to X",
+            "status": "Solved"
+        }
+    ],
+    "error": null
 }
 ```
+**Common errors:**
 
+- Invalid parameters (≤0) → 400 Bad Request
+
+- No possible solution → 404 Not Found
+
+**Response error no solution**
+```json
+{
+    "solutionFound": false,
+    "steps": null,
+    "error": "No solution is possible."
+}
+```
 ---
 
 ### 2) `POST /solve`
@@ -131,7 +143,7 @@ curl "http://localhost:8080/solve?x=3&y=5&z=4"
 curl -X POST \
   -H "Content-Type: application/json" \
   -d '{"x_capacity": 3, "y_capacity": 5, "z_amount_wanted": 4}' \
-  http://localhost:8080/solve
+  http://localhost:5144/WaterJug/solve
 ```
 
 **Example Error Response (HTTP 400 Bad Request):**
@@ -145,7 +157,8 @@ curl -X POST \
 **Example No-Solution Response (HTTP 404 Not Found):**
 ```json
 {
-  "solution_found": false,
+  "solutionFound": false,
+  "steps": null,
   "error": "No solution is possible."
 }
 ```
