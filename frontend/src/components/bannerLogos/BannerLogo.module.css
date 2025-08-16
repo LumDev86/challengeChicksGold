@@ -1,0 +1,52 @@
+.banner {
+    background-color: #2b2d3a;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 1400px; /* Establecemos un ancho máximo para el contenedor */
+    margin: 0 auto; /* Centramos el contenedor en desktop */
+    padding: 0 1rem; /* Añadimos padding para que no se pegue a los bordes */
+    gap: 1.5rem;
+}
+
+.logo {
+    height: 5rem;
+    opacity: 0.8;
+}
+
+.text {
+    color: #9294a5;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+/* --- Media Queries --- */
+
+/* Mobile y Tablet */
+@media (max-width: 1080px) {
+
+    .container {
+        /* Para alinear a la izquierda, es mejor usar "flex-start" o no especificar "justify-content" */
+        justify-content: flex-start;
+        flex-wrap: wrap; /* Permite que los elementos se envuelvan si no hay espacio */
+        margin: 0; /* Eliminamos el margin-left fijo */
+        padding: 0 1rem; /* Mantenemos el padding para el espacio en los bordes */
+        gap: 0.75rem; /* Reducimos el espacio entre los iconos */
+    }
+
+    .logo {
+        height: 3rem;
+        opacity: 1;
+    }
+
+    .text {
+        font-size: 1rem;
+        margin-top: 0; /* Eliminamos el margin-top para que se alinee mejor */
+    }
+}

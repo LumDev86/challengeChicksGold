@@ -1,44 +1,147 @@
+/* --- Contenedor general --- */
+.wrapper {
+  padding: 1rem 0;
+  margin-top: 5rem;
+}
+
 .filterBar {
-  background-color: #424457;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
   color: white;
-  padding: 1rem 2rem;
+}
+
+/* --- Fila de filtros --- */
+.filtersRow {
   display: flex;
+  gap: 0.75rem;
   align-items: center;
-  flex-direction: column;
-}
-
-.caption {
-  margin-right: 7rem;
-  padding: 5rem 0 0 0;
-  font-size: 3rem;
-}
-
-.filters {
-  display: flex;
-  gap: 1rem;
   flex-wrap: wrap;
-  align-items: center;
 }
 
 .filterItem {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background-color: #333;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  background-color: #3b3d4d;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  color: white;
+  height: 40px;
 }
 
-.filterItem select,
-.filterItem input {
-  background-color: #333;
-  color: white;
+.filterItem:hover {
+  background-color: #4b4d5e;
+}
+
+.medium {
+  flex: 0 0 180px;
+}
+
+.large {
+  flex: 1;
+}
+
+.small {
+  flex: 0 0 130px;
+}
+
+/* --- Iconos --- */
+.icon {
+  margin-right: 0.4rem;
+  font-size: 1rem;
+}
+
+/* --- Input de búsqueda --- */
+.input {
+  background: transparent;
   border: none;
   outline: none;
-  padding: 0.3rem 0.5rem;
-  border-radius: 4px;
+  color: white;
+  width: 100%;
 }
 
-.filterItem .icon {
-  color: #00c76f;
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
+
+/* --- Label para selects decorativos (si se usa) --- */
+.filterLabel {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.filterLabel small {
+  font-size: 0.65rem;
+  opacity: 0.75;
+}
+
+.filterLabel span {
+  font-size: 0.85rem;
+}
+
+/* --- Flecha --- */
+.arrow {
+  margin-left: auto;
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+/* --- Estilo real para select funcional --- */
+.select {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  width: 100%;
+  appearance: none;
+  font-size: 0.85rem;
+}
+
+.select option {
+  background-color: #2b2d3a;
+  color: white;
+}
+
+/* --- Responsive para tablet --- */
+@media (max-width: 1024px) {
+  .filtersRow {
+    flex-wrap: wrap;
+    margin: 0 1rem;
+  }
+
+  .medium {
+    flex: 1 1 48%;
+  }
+
+  .large {
+    flex: 1 1 100%;
+  }
+
+  .small {
+    flex: 1 1 48%;
+  }
+
+  .title {
+    margin-left: 1rem;
+  }
+}
+
+/* --- Responsive para móvil --- */
+@media (max-width: 600px) {
+  .medium, .small {
+    flex: 1 1 100%;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+}
+
+
+

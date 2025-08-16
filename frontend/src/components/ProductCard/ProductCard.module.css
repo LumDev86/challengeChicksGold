@@ -1,9 +1,121 @@
-.productCard {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    text-align: center;
+/* ProductCard.module.css */
+.card {
+  background-color: #2b2d3a;
+  border-radius: 8px;
+  padding: 0.8rem; /* reducido */
+  width: 190px; /* antes 220px */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.onSale {
+  color: #00ff80;
+  font-size: 0.75rem; /* antes 0.8rem */
+  font-weight: 500;
+}
+
+.quantity select {
+  background-color: #3b3d4d;
+  border: none;
+  color: white;
+  padding: 0.25rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+.stockTag {
+  border: 1px solid #00c76f;
+  color: #00c76f;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%; /* más pequeña */
+  margin: 0 auto;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 0.9rem; /* antes 1rem */
+  font-weight: 600;
+}
+
+.prices {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.priceNow {
+  font-weight: 700;
+  font-size: 0.9rem; /* antes 1rem */
+}
+
+.priceOld {
+  font-size: 0.8rem; /* antes 0.85rem */
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.description {
+  font-size: 0.7rem; /* antes 0.75rem */
+  opacity: 0.8;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+
+.details {
+  flex: 1;
+  background-color: #3b3d4d;
+  color: gray;
+  border: none;
+  padding: 0.3rem; /* menos padding */
+  border-radius: 4px;
+  cursor: not-allowed;
+  font-size: 0.8rem;
+}
+
+.add {
+  flex: 1;
+  background-color: #5661ff;
+  color: white;
+  border: none;
+  padding: 0.3rem; /* menos padding */
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+

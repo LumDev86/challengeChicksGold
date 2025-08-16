@@ -1,61 +1,88 @@
-import { useState } from 'react';
-import { FaLeaf, FaDollarSign, FaGamepad } from 'react-icons/fa';
-import styles from './FilterBar.module.css';
+import { useState } from "react";
+import { FaSearch, FaGamepad, FaMoneyBillWave, FaFeather } from "react-icons/fa";
+import styles from "./FilterBar.module.css";
 
-function FilterBar() {
-  const [selectedGame, setSelectedGame] = useState('All');
-  const [search, setSearch] = useState('');
-  const [price, setPrice] = useState('All');
-  const [itemType, setItemType] = useState('All');
+function FilterBar({ onFilterChange }) {
+  const [filters, setFilters] = useState({
+    game: "",
+    search: "",
+    price: "all",
+    itemType: "all",
+  });
+
+  const handleChange = (key, value) => {
+    const newFilters = { ...filters, [key]: value };
+    setFilters(newFilters);
+    onFilterChange?.(newFilters); // Llama a la función padre si existe
+  };
 
   return (
-    <nav className={styles.filterBar}>
-      <h1 className={styles.caption}>Condimentum consectetur</h1>
-      <div className={styles.filters}>
-        {/* Select Game */}
-        <div className={styles.filterItem}>
-          <FaGamepad className={styles.icon} />
-          <select value={selectedGame} onChange={(e) => setSelectedGame(e.target.value)}>
-            <option value="All">Select a game</option>
-            <option value="Game1">Game 1</option>
-            <option value="Game2">Game 2</option>
-          </select>
-        </div>
+    <div className={styles.wrapper}>
+      <div className={styles.filterBar}>
+        <h1 className={styles.title}>Condimentum consectetur</h1>
 
-        {/* Search */}
-        <div className={styles.filterItem}>
-          <input 
-            type="text" 
-            placeholder="Search" 
-            value={search} 
-            onChange={(e) => setSearch(e.target.value)} 
-          />
-        </div>
+        <div className={styles.filtersRow}>
+          {/* Select game */}
+          <div className={`${styles.filterItem} ${styles.medium}`}>
+            <FaGamepad className={styles.icon} />
+            <select
+              value={filters.game}
+              onChange={(e) => handleChange("game", e.target.value)}
+              className={styles.select}
+            >
+              <option value="">Select a game</option>
+              <option value="game1">Game 1</option>
+              <option value="game2">Game 2</option>
+            </select>
+          </div>
 
-        {/* Price */}
-        <div className={styles.filterItem}>
-          <FaDollarSign className={styles.icon} />
-          <select value={price} onChange={(e) => setPrice(e.target.value)}>
-            <option value="All">All</option>
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-          </select>
-        </div>
+          {/* Search */}
+          <div className={`${styles.filterItem} ${styles.large}`}>
+            <FaSearch className={styles.icon} />
+            <input
+              type="text"
+              placeholder="Search"
+              value={filters.search}
+              onChange={(e) => handleChange("search", e.target.value)}
+              className={styles.input}
+            />
+          </div>
 
-        {/* Item Type */}
-        <div className={styles.filterItem}>
-          <FaLeaf className={styles.icon} />
-          <select value={itemType} onChange={(e) => setItemType(e.target.value)}>
-            <option value="All">All</option>
-            <option value="Type1">Type 1</option>
-            <option value="Type2">Type 2</option>
-          </select>
+          {/* Price */}
+          <div className={`${styles.filterItem} ${styles.small}`}>
+            <FaMoneyBillWave className={styles.icon} />
+            <select
+              value={filters.price}
+              onChange={(e) => handleChange("price", e.target.value)}
+              className={styles.select}
+            >
+              <option value="all">All</option>
+              <option value="low">Low</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+
+          {/* Item type */}
+          <div className={`${styles.filterItem} ${styles.small}`}>
+            <FaFeather className={styles.icon} />
+            <select
+              value={filters.itemType}
+              onChange={(e) => handleChange("itemType", e.target.value)}
+              className={styles.select}
+            >
+              <option value="all">All</option>
+              <option value="type1">Type 1</option>
+              <option value="type2">Type 2</option>
+            </select>
+          </div>
         </div>
       </div>
-    </nav>
+    </div>
   );
 }
 
 export default FilterBar;
+
+
+
 

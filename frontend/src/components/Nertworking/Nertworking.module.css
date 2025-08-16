@@ -1,0 +1,60 @@
+.nertworking {
+    padding-bottom: 2rem;
+    margin-top: 2rem;
+    width: 100%;
+    border-bottom: solid 2px #9c9cac;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 1400px; /* Establecemos un ancho máximo para el contenedor */
+    margin: 0 auto; /* Centramos el contenedor en desktop */
+    padding: 0 1rem; /* Añadimos padding para que no se pegue a los bordes */
+    gap: 1.5rem;
+}
+
+.icon {
+    width: 3rem; /* Tamaño de los íconos */
+    height: 3rem;
+    border-radius: 50%;
+    /* Efecto de borde y sombra, ajusta los valores a tu gusto */
+    border: 2px solid transparent; 
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Colores de fondo basados en la imagen */
+.container a:nth-child(1) .icon {
+    background-color: #3b5998;
+}
+
+.container a:nth-child(2) .icon {
+    background-color: #e4405f;
+}
+
+.container a:nth-child(3) .icon {
+    background-color: #1da1f2;
+}
+
+.container a:nth-child(4) .icon {
+    background-color: #5865f2;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+}
+
+/* --- Media Queries --- */
+
+@media (max-width: 768px) {
+    .container {
+        flex-wrap: wrap; /* Los íconos se envuelven en una nueva línea */
+        gap: 1rem;
+    }
+
+    .icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}

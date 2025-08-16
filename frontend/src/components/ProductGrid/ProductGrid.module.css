@@ -1,9 +1,80 @@
-.productGrid {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    text-align: center;
+.container {
+  padding: 4rem 4rem;
+  margin: 2rem auto;
+  border: 2px solid #535566;
+  border-radius: 5px;
+}
+
+.inner {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.results {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  color: white;
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sortBtn {
+  background-color: #3b3d4d;
+  border: none;
+  padding: 0.4rem 0.6rem;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.select {
+  background-color: #3b3d4d;
+  border: none;
+  color: white;
+  padding: 0.4rem;
+  border-radius: 4px;
+}
+
+/* 5 columnas por defecto para desktop */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+/* --- Media Queries --- */
+
+/* 4 columnas para pantallas de tamaño mediano (por ejemplo, laptops pequeñas) */
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* 3 columnas para tablets */
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 2 columnas para móviles */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

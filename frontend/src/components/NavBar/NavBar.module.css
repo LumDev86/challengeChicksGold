@@ -2,11 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #35364a; /* color del fondo del logo */
-  padding: 2rem 2rem; /* un poco más alto */
+  background-color: #35364a;
+  padding: 1rem 2rem;
   font-family: 'Poppins', sans-serif;
   color: white;
   border-bottom: #9c9cac 1.5px solid;
+  width: 100%;
 }
 
 .logoSection {
@@ -15,16 +16,12 @@
 }
 
 .logo {
-  height: 60px; /* más grande que los 35px originales */
-  margin-right: 1rem;
+  height: 60px;
 }
 
 .menu {
   display: flex;
   gap: 2rem;
-  margin-left: 7rem;
-  flex: 1;
-  justify-content: start;
 }
 
 .menu a {
@@ -42,17 +39,10 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  margin: 2.5rem;
 }
 
-.dropdown {
-  cursor: pointer;
-}
-
-.cart {
-  cursor: pointer;
-}
-
-.currency {
+.cart, .currency {
   cursor: pointer;
 }
 
@@ -78,28 +68,103 @@
   display: none;
 }
 
-/* Style Mobile */
+/* Overlay oscuro */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 99;
+}
 
-@media (max-width: 768px) {
-  .navbar {
-    padding: 1rem;
-    justify-content: space-between;
-  }
+/* Cerrar menú */
+.closeBtn {
+  display: none;
+}
 
-  .menu {
-    display: none; /* ocultamos menú principal */
-    position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background-color: #35364a;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem 2rem;
-  }
+/* ============================= */
+/* Submenús (desktop + mobile)   */
+/* ============================= */
 
-  .menu.active {
-    display: flex; /* se mostrará cuando se active el menú */
+.navbar {
+  width: 100%;
+}
+
+.menuItem {
+  position: relative;
+}
+
+.menuLink {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Empuja solo el ícono de flecha al extremo derecho del item */
+.menuLink svg:last-of-type {
+  margin-left: auto;
+  transition: transform 0.25s ease;
+}
+
+/* Rota la flecha cuando el submenú está abierto */
+.menuItem.open .menuLink svg:last-of-type {
+  transform: rotate(180deg);
+}
+
+/* Dropdown base (oculto por defecto) */
+.submenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 220px;
+  background-color: #2c2d3f;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+
+  /* Animación de despliegue */
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-6px);
+  transition: max-height 0.25s ease, opacity 0.2s ease, transform 0.2s ease;
+  z-index: 200;
+}
+
+/* Mostrar submenu cuando el item está abierto */
+.menuItem.open > .submenu {
+  max-height: 60vh;    /* suficiente para varios items */
+  opacity: 1;
+  transform: translateY(0);
+  overflow: auto;
+}
+
+.submenu a {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.92rem;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.submenu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* ============================= */
+/* Tablet y Mobile               */
+/* ============================= */
+@media (max-width: 1080px) {
+  .hamburger {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
   }
 
   .logoSection {
@@ -107,13 +172,86 @@
     justify-content: center;
   }
 
-  .rightSection {
+  .menu {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: -100%; /* escondido completamente */
+    height: 100%;
+    width: 250px;
+    background-color: #35364a;
+    padding: 2rem 1rem;
     gap: 1rem;
+    transition: left 0.3s ease;
+    z-index: 100;
   }
 
-  .hamburger {
+  .menu.active {
+    left: 0;
+  }
+
+  .menu a,
+  .menuLink {
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .closeBtn {
     display: block;
-    cursor: pointer;
+    align-self: flex-end;
     font-size: 1.5rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+
+  /* Submenús anidados dentro del panel lateral */
+  .submenu {
+    position: static;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0.25rem 0 0.5rem 0.75rem;
+
+    /* animación vertical en panel lateral */
+    max-height: 0;
+    opacity: 0;
+    transform: none;
+    transition: max-height 0.25s ease, opacity 0.2s ease;
+  }
+
+  .menuItem.open > .submenu {
+    max-height: 600px;
+    opacity: 1;
+    transition: 0.5s ease;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .submenu a {
+    padding: 0.4rem 0;
+    font-size: 0.98rem;
   }
 }
+
+/* ============================= */
+/* Mobile más compacto           */
+/* ============================= */
+@media (max-width: 768px) {
+  .rightSection {
+    gap: 0.8rem;
+    margin: 2.5rem; /* un poco menos de margen en móviles */
+  }
+
+  .signIn {
+    padding: 0.3rem 0.6rem;
+  }
+
+  .logo {
+    display: none;
+  }
+}
+
