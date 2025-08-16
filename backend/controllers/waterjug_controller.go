@@ -9,7 +9,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// SolveGetHandler handles GET requests with URL parameters.
 func SolveGetHandler(c *gin.Context) {
 	xStr := c.Query("x")
 	yStr := c.Query("y")
@@ -30,7 +29,6 @@ func SolveGetHandler(c *gin.Context) {
 	solveAndRespond(c, x, y, z)
 }
 
-// SolvePostHandler handles POST requests with a JSON body.
 func SolvePostHandler(c *gin.Context) {
 	var req models.RequestPayload
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -41,7 +39,6 @@ func SolvePostHandler(c *gin.Context) {
 		return
 	}
 
-	// Validate that the values are positive
 	if req.XCapacity <= 0 || req.YCapacity <= 0 || req.ZAmount <= 0 {
 		c.JSON(http.StatusBadRequest, models.SolutionResponse{
 			SolutionFound: false,
@@ -53,8 +50,6 @@ func SolvePostHandler(c *gin.Context) {
 	solveAndRespond(c, req.XCapacity, req.YCapacity, req.ZAmount)
 }
 
-// solveAndRespond contains the common logic for both handlers,
-// calling the service and building the JSON response.
 func solveAndRespond(c *gin.Context, x, y, z int) {
 	steps, solved := services.SolveWaterJug(x, y, z)
 	if !solved {

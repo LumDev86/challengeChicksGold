@@ -7,7 +7,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// setupRouter configura todas las rutas de la aplicación.
 func setupRouter() *gin.Engine {
 	r := gin.Default()
 
