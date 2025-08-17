@@ -6,7 +6,7 @@ This document summarizes my approach and implementation for the software enginee
 
 ## 1. My Backend Solution: The Water Jug Puzzle
 
-For the backend portion, I designed and developed a RESTful API in Go that solves the puzzle. My goal was to create a solution that was not only correct, but also efficient and well-structured, demonstrating my ability to tackle complex problems and translate them into a robust backend architecture.
+For the backend portion, I designed and developed a RESTful API in C# and .NET Core that solves the puzzle. My goal was to create a solution that was not only correct, but also efficient and well-structured, demonstrating my ability to tackle complex problems and translate them into a robust backend architecture.
 
 **My Algorithmic Approach:**
 
